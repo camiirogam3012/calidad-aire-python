@@ -1,0 +1,6 @@
+format: jb-book
+root: intro
+chapters:
+  - file: planteamiento
+  - file: eda
+  - file: conclusiones
