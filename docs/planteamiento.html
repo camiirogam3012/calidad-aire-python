@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Planteamiento &#8212; Calidad del aire en Colombia</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/portada.css?v=63a57dca" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Haz clic para mostrar';</script>
+    <script>let toggleHintHide = 'Haz clic para ocultar';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/translations.js?v=d190bf04"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'planteamiento';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Análisis exploratorio de datos" href="eda.html" />
+    <link rel="prev" title="Calidad del aire en Colombia, 2011–2024" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Calidad del aire en Colombia</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Planteamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda.html">Análisis exploratorio de datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusiones.html">Conclusiones</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/planteamiento.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Planteamiento</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marco-de-referencia">Marco de referencia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento-del-problema">Planteamiento del problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo-general">Objetivo general</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-especificos">Objetivos específicos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia">Metodología</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="planteamiento">
+<h1>Planteamiento<a class="headerlink" href="#planteamiento" title="Link to this heading">#</a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>La contaminación del aire es uno de los principales riesgos ambientales para la salud. Partículas finas como el PM2.5 llegan hasta los alvéolos pulmonares, y gases como el dióxido de nitrógeno (NO₂) y el ozono (O₃) irritan las vías respiratorias. En Colombia, estos contaminantes los vigilan las autoridades ambientales regionales y urbanas mediante redes de estaciones de monitoreo, cuyos resultados se consolidan a nivel nacional.</p>
+<p>Este trabajo analiza ese consolidado entre 2011 y 2024. Cada registro resume, para una estación, una variable y un tiempo de exposición, los estadísticos del año: promedio, mediana, percentil 98, máximo, mínimo, número de datos y representatividad temporal.</p>
+</section>
+<section id="marco-de-referencia">
+<h2>Marco de referencia<a class="headerlink" href="#marco-de-referencia" title="Link to this heading">#</a></h2>
+<p>En Colombia, la <strong>Resolución 2254 de 2017</strong> del Ministerio de Ambiente y Desarrollo Sostenible fija los niveles máximos permisibles de contaminantes en el aire. Además de los niveles vigentes, define metas más estrictas a 2030.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Contaminante</p></th>
+<th class="head"><p>Tiempo de exposición</p></th>
+<th class="head"><p>Nivel vigente (µg/m³)</p></th>
+<th class="head"><p>Meta 2030 (µg/m³)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PM10</p></td>
+<td><p>Anual</p></td>
+<td><p>50</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>PM2.5</p></td>
+<td><p>Anual</p></td>
+<td><p>25</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>NO₂</p></td>
+<td><p>Anual</p></td>
+<td><p>60</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p>SO₂</p></td>
+<td><p>24 horas</p></td>
+<td><p>50</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>O₃</p></td>
+<td><p>8 horas</p></td>
+<td><p>100</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estos valores sirven como <strong>referencia</strong> para leer los promedios del EDA. No permiten verificar cumplimiento, porque el dataset mezcla tiempos de exposición distintos (1, 8 y 24 horas).</p>
+<p>Las variables meteorológicas importan porque controlan la dispersión: el viento y la mezcla vertical (favorecida por la temperatura) diluyen los contaminantes, y la radiación solar participa en la formación de ozono.</p>
+</section>
+<section id="planteamiento-del-problema">
+<h2>Planteamiento del problema<a class="headerlink" href="#planteamiento-del-problema" title="Link to this heading">#</a></h2>
+<p>Colombia cuenta con más de una década de mediciones, pero la información llega de decenas de autoridades, con estaciones que entran y salen de operación, tiempos de exposición distintos y criterios de registro no homogéneos. Antes de usarla para tomar decisiones o construir modelos, hace falta saber qué contiene realmente, qué tan completa es y qué patrones muestra. Sin esa caracterización se corre el riesgo de sacar conclusiones de artefactos de los datos.</p>
+<p><strong>Pregunta de investigación:</strong></p>
+<blockquote>
+<div><p>¿Es posible anticipar, a partir de la ubicación, el tipo de estación y las características del monitoreo, qué estaciones registrarán días con PM2.5 por encima del límite diario de la norma? Y, como paso previo, ¿qué tan confiable y representativa es la información disponible para construir ese modelo?</p>
+</div></blockquote>
+<p>Predecir las excedencias tiene valor práctico: permite priorizar dónde reforzar el monitoreo, emitir alertas tempranas y focalizar medidas de control en las zonas con mayor riesgo para la salud.</p>
+</section>
+<section id="objetivos">
+<span id="id1"></span><h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
+<section id="objetivo-general">
+<h3>Objetivo general<a class="headerlink" href="#objetivo-general" title="Link to this heading">#</a></h3>
+<p>Desarrollar un modelo de clasificación que prediga si una estación de monitoreo registrará excedencias del límite diario de PM2.5 establecido en la Resolución 2254 de 2017, e integrarlo en un dashboard interactivo, a partir del análisis exploratorio de los datos de calidad del aire de Colombia (2011–2024).</p>
+</section>
+<section id="objetivos-especificos">
+<h3>Objetivos específicos<a class="headerlink" href="#objetivos-especificos" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Realizar un análisis exploratorio</strong> que evalúe la calidad del dataset y caracterice la cobertura del monitoreo, los contaminantes, las variables meteorológicas, sus asociaciones y sus valores atípicos. <em>(Secciones 1 a 1.10)</em></p></li>
+<li><p><strong>Caracterizar la variable objetivo</strong> —la excedencia del límite diario de PM2.5— y su relación con los posibles predictores. <em>(Sección 1.11)</em></p></li>
+<li><p><strong>Identificar los problemas de los datos</strong> que debe resolver el preprocesamiento antes de entrenar el modelo. <em>(Conclusiones)</em></p></li>
+<li><p><strong>Entrenar y comparar modelos de clasificación</strong> con validación por estación. <em>(Siguiente etapa)</em></p></li>
+<li><p><strong>Construir un dashboard interactivo</strong> que integre el análisis exploratorio y el modelo. <em>(Siguiente etapa)</em></p></li>
+</ol>
+<p>Este libro corresponde a la <strong>etapa de análisis exploratorio</strong> y desarrolla los objetivos 1, 2 y 3.</p>
+</section>
+</section>
+<section id="metodologia">
+<h2>Metodología<a class="headerlink" href="#metodologia" title="Link to this heading">#</a></h2>
+<p>El proyecto sigue cuatro etapas: <strong>análisis exploratorio → preprocesamiento → modelado → dashboard</strong>. En esta etapa (EDA) se aplicó el siguiente flujo:</p>
+<ol class="arabic simple">
+<li><p><strong>Carga y conversión de tipos.</strong> Las columnas numéricas venían como texto con comas de miles; se eliminan las comas y se convierten a número.</p></li>
+<li><p><strong>Diagnóstico de calidad.</strong> Conteo de faltantes y duplicados, revisión de categorías y de la representatividad temporal.</p></li>
+<li><p><strong>Depuración.</strong> Se eliminan las filas duplicadas exactas. Los valores atípicos se conservan, porque un dato extremo no es necesariamente un error.</p></li>
+<li><p><strong>Análisis univariado.</strong> Estadística descriptiva y diagramas de caja por variable, sobre la columna <code class="docutils literal notranslate"><span class="pre">Promedio</span></code>.</p></li>
+<li><p><strong>Análisis temporal.</strong> Promedio anual de cada variable y cambio porcentual entre 2011 y 2024.</p></li>
+<li><p><strong>Análisis bivariado.</strong> Correlación de Pearson sobre los promedios anuales, con esta escala de fuerza: |r| ≥ 0,80 muy fuerte; 0,60–0,79 fuerte; 0,40–0,59 moderada; 0,20–0,39 débil; &lt; 0,20 muy débil.</p></li>
+<li><p><strong>Valores atípicos.</strong> Criterio de Tukey: es atípico todo valor por debajo de Q1 − 1,5·IQR o por encima de Q3 + 1,5·IQR.</p></li>
+<li><p><strong>Variable objetivo.</strong> Excedencia del límite diario de PM2.5 (registros de 24 horas), su balance y su relación con los predictores candidatos, controlando la fuga de información.</p></li>
+</ol>
+<p><strong>Herramientas:</strong> Python (pandas, NumPy, SciPy, Matplotlib, seaborn). El mismo análisis se replicó en R con resultados idénticos.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Calidad del aire en Colombia, 2011–2024</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eda.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Análisis exploratorio de datos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marco-de-referencia">Marco de referencia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento-del-problema">Planteamiento del problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo-general">Objetivo general</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-especificos">Objetivos específicos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia">Metodología</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Camilo Romero
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

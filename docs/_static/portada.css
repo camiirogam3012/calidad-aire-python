@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap");
+
+/* Identidad común de los entregables: bruma urbana sobre los Andes */
+.portada {
+  --haze: #eef2f3;
+  --ink: #1c2b33;
+  --slate: #4a6572;
+  --limpio: #8fbcce;
+  --excede: #a23b48;
+  --enlace: #0f6e6a;
+  --linea: #d5dee2;
+  color: var(--ink);
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  max-width: 760px;
+  margin: 0 0 3em;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── La huella ── */
+.portada.portada-ancha { max-width: none; margin-bottom: 0; }
+.portada .huella-fig { margin: 0 0 2.4em; text-align: left; }
+.huella { display: block; width: 100%; height: auto; background: var(--haze); border-radius: 6px; padding: 14px 14px 2px; box-sizing: border-box; }
+.huella .h-exc { fill: var(--excede); }
+.huella .h-ok { fill: var(--limpio); }
+.huella .h-anios text { font: 12px Inter, sans-serif; fill: var(--slate); }
+.portada .huella-fig figcaption { text-align: left; font-size: 0.86em; line-height: 1.5; color: var(--slate); margin-top: 0.6em; max-width: 64ch; }
+.sw { display: inline-block; width: 0.7em; height: 0.7em; border-radius: 2px; margin: 0 0.3em 0 0.15em; vertical-align: -0.05em; }
+.sw-exc { background: var(--excede); }
+.sw-ok { background: var(--limpio); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .huella rect { transform-origin: bottom; animation: crecer 0.9s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes crecer { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+}
+
+/* ── Título y autor ── */
+.portada .p-titulo {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(2em, 4.2vw, 2.9em);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  margin: 0 0 1em;
+  border: 0;
+  color: var(--ink);
+}
+.portada .p-pregunta { font-size: 1.12em; line-height: 1.6; color: var(--ink); max-width: 62ch; margin: 0 0 1.4em; }
+.portada .p-autor { font-size: 0.95em; line-height: 1.6; color: var(--slate); margin: 0 0 1.6em; }
+.portada .p-autor strong { color: var(--ink); margin-right: 0.5em; }
+.portada a { color: var(--enlace); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.portada a:focus-visible { outline: 2px solid var(--enlace); outline-offset: 2px; border-radius: 3px; }
+
+/* ── Selector de formato ── */
+.formatos { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--linea); border-radius: 10px; overflow: hidden; margin-bottom: 2.6em; }
+.formatos .fmt { display: flex; flex-direction: column; padding: 0.55em 1.1em; font-weight: 600; font-size: 0.95em; color: var(--ink); text-decoration: none; border-right: 1px solid var(--linea); }
+.formatos .fmt:last-child { border-right: 0; }
+.formatos .fmt small { font-weight: 400; font-size: 0.76em; color: var(--slate); }
+.formatos a.fmt:hover { background: var(--haze); }
+.formatos .fmt-actual { background: var(--ink); color: #fff; }
+.formatos .fmt-actual small { color: #b9cbd3; }
+
+/* ── Secciones ── */
+.portada .p-h2 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.35em; font-weight: 600; margin: 2.2em 0 0.9em; border: 0; padding: 0; color: var(--ink); }
+
+/* Ruta del proyecto: una secuencia real, por eso va numerada */
+.portada ol.ruta { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.ruta li { position: relative; padding: 2.4em 0.8em 0 0; font-size: 0.9em; line-height: 1.4; margin: 0; }
+.ruta li::before { content: ""; position: absolute; top: 0.95em; left: 0; right: 0; height: 2px; background: var(--linea); }
+.ruta .ruta-n { position: absolute; top: 0; left: 0; width: 2em; height: 2em; border-radius: 50%; background: #fff; border: 2px solid var(--linea); display: grid; place-items: center; font-weight: 600; font-size: 0.85em; color: var(--slate); z-index: 1; }
+.ruta li strong { display: block; color: var(--ink); }
+.ruta li span:last-child { color: var(--slate); }
+.ruta .ruta-actual::before { background: linear-gradient(to right, var(--enlace) 0 2em, var(--linea) 2em); }
+.ruta .ruta-actual .ruta-n { background: var(--enlace); border-color: var(--enlace); color: #fff; }
+
+/* Capítulos */
+.portada dl.capitulos { display: grid; grid-template-columns: 11em 1fr; gap: 0.7em 1.4em; margin: 0; }
+.capitulos dt { font-weight: 600; margin: 0; }
+.portada .capitulos dd { margin: 0; margin-left: 0; color: var(--slate); line-height: 1.55; }
+
+/* Hallazgos */
+.portada ul.hallazgos { padding-left: 1.1em; margin: 0; }
+.hallazgos li { margin: 0 0 0.6em; line-height: 1.6; }
+.hallazgos li::marker { color: var(--excede); }
+
+@media (max-width: 640px) {
+  .portada ol.ruta { grid-template-columns: 1fr 1fr; row-gap: 1.2em; }
+  .portada dl.capitulos { grid-template-columns: 1fr; gap: 0.2em; }
+  .portada .capitulos dd { margin-bottom: 0.8em; }
+}
+
+/* Modo oscuro (tema de Jupyter Book) */
+html[data-theme="dark"] .portada { --haze: #1f2a30; --ink: #e6edf0; --slate: #9fb3bd; --linea: #34444c; --enlace: #5ec4bd; --limpio: #4f7f93; --excede: #d0606e; }
+html[data-theme="dark"] .ruta .ruta-n { background: #121212; }
+html[data-theme="dark"] .formatos .fmt-actual { background: #e6edf0; color: #121212; }
+html[data-theme="dark"] .formatos .fmt-actual small { color: #4a6572; }
+
+/* Título de la portada en Jupyter Book (encabezado Markdown real) */
+section#calidad-del-aire-en-colombia-20112024 > h1 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  max-width: 760px;
+  color: #1c2b33;
+}
+html[data-theme="dark"] section#calidad-del-aire-en-colombia-20112024 > h1 { color: #e6edf0; }
+section#calidad-del-aire-en-colombia-20112024 > h1 .headerlink { display: none; }
+
+html[data-theme="light"], html[data-theme="dark"] { --pst-color-primary: #0f6e6a; }
