@@ -47,7 +47,7 @@
 }
 .portada .p-pregunta { font-size: 1.12em; line-height: 1.6; color: var(--ink); max-width: 62ch; margin: 0 0 1.4em; }
 .portada .p-autor { font-size: 0.95em; line-height: 1.6; color: var(--slate); margin: 0 0 1.6em; }
-.portada .p-autor strong { color: var(--ink); margin-right: 0.5em; }
+.portada .p-autor .autor { color: var(--ink); margin-right: 0.5em; font-weight: 500; }
 .portada a { color: var(--enlace); text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .portada a:focus-visible { outline: 2px solid var(--enlace); outline-offset: 2px; border-radius: 3px; }
 
@@ -68,7 +68,7 @@
 .ruta li { position: relative; padding: 2.4em 0.8em 0 0; font-size: 0.9em; line-height: 1.4; margin: 0; }
 .ruta li::before { content: ""; position: absolute; top: 0.95em; left: 0; right: 0; height: 2px; background: var(--linea); }
 .ruta .ruta-n { position: absolute; top: 0; left: 0; width: 2em; height: 2em; border-radius: 50%; background: #fff; border: 2px solid var(--linea); display: grid; place-items: center; font-weight: 600; font-size: 0.85em; color: var(--slate); z-index: 1; }
-.ruta li strong { display: block; color: var(--ink); }
+.ruta li .ruta-t { display: block; color: var(--ink); font-weight: 500; }
 .ruta li span:last-child { color: var(--slate); }
 .ruta .ruta-actual::before { background: linear-gradient(to right, var(--enlace) 0 2em, var(--linea) 2em); }
 .ruta .ruta-actual .ruta-n { background: var(--enlace); border-color: var(--enlace); color: #fff; }

@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/portada.css?v=63a57dca" />
+    <link rel="stylesheet" type="text/css" href="_static/portada.css?v=240fb320" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -64,6 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'planteamiento';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Análisis exploratorio de datos" href="eda.html" />
@@ -380,12 +381,12 @@
 <h1>Planteamiento<a class="headerlink" href="#planteamiento" title="Link to this heading">#</a></h1>
 <section id="introduccion">
 <h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
-<p>La contaminación del aire es uno de los principales riesgos ambientales para la salud. Partículas finas como el PM2.5 llegan hasta los alvéolos pulmonares, y gases como el dióxido de nitrógeno (NO₂) y el ozono (O₃) irritan las vías respiratorias. En Colombia, estos contaminantes los vigilan las autoridades ambientales regionales y urbanas mediante redes de estaciones de monitoreo, cuyos resultados se consolidan a nivel nacional.</p>
-<p>Este trabajo analiza ese consolidado entre 2011 y 2024. Cada registro resume, para una estación, una variable y un tiempo de exposición, los estadísticos del año: promedio, mediana, percentil 98, máximo, mínimo, número de datos y representatividad temporal.</p>
+<p>La contaminación del aire es uno de los riesgos ambientales que más afectan la salud. Las partículas finas como el PM2.5 llegan hasta los alvéolos, y gases como el dióxido de nitrógeno (NO₂) y el ozono (O₃) irritan las vías respiratorias. En Colombia estos contaminantes los miden las autoridades ambientales con redes de estaciones, y los resultados se reúnen en un consolidado nacional.</p>
+<p>En este trabajo se analiza ese consolidado entre 2011 y 2024. Cada registro resume un año de mediciones para una estación, una variable y un tiempo de exposición, con el promedio, la mediana, el percentil 98, el máximo, el mínimo, el número de datos y la representatividad temporal.</p>
 </section>
 <section id="marco-de-referencia">
 <h2>Marco de referencia<a class="headerlink" href="#marco-de-referencia" title="Link to this heading">#</a></h2>
-<p>En Colombia, la <strong>Resolución 2254 de 2017</strong> del Ministerio de Ambiente y Desarrollo Sostenible fija los niveles máximos permisibles de contaminantes en el aire. Además de los niveles vigentes, define metas más estrictas a 2030.</p>
+<p>La Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible fija los niveles máximos permitidos de contaminantes en el aire y unas metas más estrictas para 2030.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Contaminante</p></th>
@@ -418,55 +419,54 @@
 <tr class="row-even"><td><p>O₃</p></td>
 <td><p>8 horas</p></td>
 <td><p>100</p></td>
-<td><p>—</p></td>
+<td><p>Sin meta</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Estos valores sirven como <strong>referencia</strong> para leer los promedios del EDA. No permiten verificar cumplimiento, porque el dataset mezcla tiempos de exposición distintos (1, 8 y 24 horas).</p>
-<p>Las variables meteorológicas importan porque controlan la dispersión: el viento y la mezcla vertical (favorecida por la temperatura) diluyen los contaminantes, y la radiación solar participa en la formación de ozono.</p>
+<p>En el EDA estos valores se usan como referencia para leer los resultados. No sirven para verificar cumplimiento porque el dataset mezcla tiempos de exposición de 1, 8 y 24 horas.</p>
+<p>Las variables meteorológicas también importan porque controlan cómo se dispersan los contaminantes. El viento y la mezcla del aire, que aumenta con la temperatura, los diluyen, y la radiación solar ayuda a formar ozono.</p>
 </section>
 <section id="planteamiento-del-problema">
 <h2>Planteamiento del problema<a class="headerlink" href="#planteamiento-del-problema" title="Link to this heading">#</a></h2>
-<p>Colombia cuenta con más de una década de mediciones, pero la información llega de decenas de autoridades, con estaciones que entran y salen de operación, tiempos de exposición distintos y criterios de registro no homogéneos. Antes de usarla para tomar decisiones o construir modelos, hace falta saber qué contiene realmente, qué tan completa es y qué patrones muestra. Sin esa caracterización se corre el riesgo de sacar conclusiones de artefactos de los datos.</p>
-<p><strong>Pregunta de investigación:</strong></p>
+<p>Colombia tiene más de diez años de mediciones, pero los datos vienen de muchas autoridades, las estaciones entran y salen de operación, los tiempos de exposición son distintos y no todos registran igual. Antes de usar esta información para tomar decisiones o hacer un modelo hay que saber qué contiene, qué tan completa está y qué patrones tiene.</p>
+<p>Pregunta de investigación:</p>
 <blockquote>
-<div><p>¿Es posible anticipar, a partir de la ubicación, el tipo de estación y las características del monitoreo, qué estaciones registrarán días con PM2.5 por encima del límite diario de la norma? Y, como paso previo, ¿qué tan confiable y representativa es la información disponible para construir ese modelo?</p>
+<div><p>¿Se puede anticipar, a partir de la ubicación, el tipo de estación y las características del monitoreo, qué estaciones van a tener días con PM2.5 por encima del límite diario de la norma? Y antes de eso, ¿qué tan confiable es la información disponible para construir ese modelo?</p>
 </div></blockquote>
-<p>Predecir las excedencias tiene valor práctico: permite priorizar dónde reforzar el monitoreo, emitir alertas tempranas y focalizar medidas de control en las zonas con mayor riesgo para la salud.</p>
+<p>Predecir las excedencias sirve para decidir dónde reforzar el monitoreo, dar alertas tempranas y enfocar las medidas de control en las zonas con más riesgo.</p>
 </section>
 <section id="objetivos">
 <span id="id1"></span><h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
 <section id="objetivo-general">
 <h3>Objetivo general<a class="headerlink" href="#objetivo-general" title="Link to this heading">#</a></h3>
-<p>Desarrollar un modelo de clasificación que prediga si una estación de monitoreo registrará excedencias del límite diario de PM2.5 establecido en la Resolución 2254 de 2017, e integrarlo en un dashboard interactivo, a partir del análisis exploratorio de los datos de calidad del aire de Colombia (2011–2024).</p>
+<p>Desarrollar un modelo de clasificación que prediga si una estación de monitoreo tendrá excedencias del límite diario de PM2.5 de la Resolución 2254 de 2017, e integrarlo en un dashboard interactivo, a partir del análisis exploratorio de los datos de calidad del aire de Colombia entre 2011 y 2024.</p>
 </section>
 <section id="objetivos-especificos">
 <h3>Objetivos específicos<a class="headerlink" href="#objetivos-especificos" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Realizar un análisis exploratorio</strong> que evalúe la calidad del dataset y caracterice la cobertura del monitoreo, los contaminantes, las variables meteorológicas, sus asociaciones y sus valores atípicos. <em>(Secciones 1 a 1.10)</em></p></li>
-<li><p><strong>Caracterizar la variable objetivo</strong> —la excedencia del límite diario de PM2.5— y su relación con los posibles predictores. <em>(Sección 1.11)</em></p></li>
-<li><p><strong>Identificar los problemas de los datos</strong> que debe resolver el preprocesamiento antes de entrenar el modelo. <em>(Conclusiones)</em></p></li>
-<li><p><strong>Entrenar y comparar modelos de clasificación</strong> con validación por estación. <em>(Siguiente etapa)</em></p></li>
-<li><p><strong>Construir un dashboard interactivo</strong> que integre el análisis exploratorio y el modelo. <em>(Siguiente etapa)</em></p></li>
+<li><p>Realizar un análisis exploratorio que evalúe la calidad del dataset y describa la cobertura del monitoreo, los contaminantes, las variables meteorológicas, sus correlaciones y sus valores atípicos.</p></li>
+<li><p>Caracterizar la variable objetivo, la excedencia del límite diario de PM2.5, y su relación con los posibles predictores.</p></li>
+<li><p>Identificar los problemas de los datos que debe resolver el preprocesamiento antes de entrenar el modelo.</p></li>
+<li><p>Entrenar y comparar modelos de clasificación con validación por estación.</p></li>
+<li><p>Construir un dashboard interactivo que integre el análisis exploratorio y el modelo.</p></li>
 </ol>
-<p>Este libro corresponde a la <strong>etapa de análisis exploratorio</strong> y desarrolla los objetivos 1, 2 y 3.</p>
 </section>
 </section>
 <section id="metodologia">
 <h2>Metodología<a class="headerlink" href="#metodologia" title="Link to this heading">#</a></h2>
-<p>El proyecto sigue cuatro etapas: <strong>análisis exploratorio → preprocesamiento → modelado → dashboard</strong>. En esta etapa (EDA) se aplicó el siguiente flujo:</p>
+<p>El proyecto tiene cuatro etapas: análisis exploratorio, preprocesamiento, modelado y dashboard. En el EDA se siguieron estos pasos:</p>
 <ol class="arabic simple">
-<li><p><strong>Carga y conversión de tipos.</strong> Las columnas numéricas venían como texto con comas de miles; se eliminan las comas y se convierten a número.</p></li>
-<li><p><strong>Diagnóstico de calidad.</strong> Conteo de faltantes y duplicados, revisión de categorías y de la representatividad temporal.</p></li>
-<li><p><strong>Depuración.</strong> Se eliminan las filas duplicadas exactas. Los valores atípicos se conservan, porque un dato extremo no es necesariamente un error.</p></li>
-<li><p><strong>Análisis univariado.</strong> Estadística descriptiva y diagramas de caja por variable, sobre la columna <code class="docutils literal notranslate"><span class="pre">Promedio</span></code>.</p></li>
-<li><p><strong>Análisis temporal.</strong> Promedio anual de cada variable y cambio porcentual entre 2011 y 2024.</p></li>
-<li><p><strong>Análisis bivariado.</strong> Correlación de Pearson sobre los promedios anuales, con esta escala de fuerza: |r| ≥ 0,80 muy fuerte; 0,60–0,79 fuerte; 0,40–0,59 moderada; 0,20–0,39 débil; &lt; 0,20 muy débil.</p></li>
-<li><p><strong>Valores atípicos.</strong> Criterio de Tukey: es atípico todo valor por debajo de Q1 − 1,5·IQR o por encima de Q3 + 1,5·IQR.</p></li>
-<li><p><strong>Variable objetivo.</strong> Excedencia del límite diario de PM2.5 (registros de 24 horas), su balance y su relación con los predictores candidatos, controlando la fuga de información.</p></li>
+<li><p>Carga y conversión de tipos. Las columnas numéricas venían como texto con comas de miles. Se quitan las comas y se convierten a número.</p></li>
+<li><p>Diagnóstico de calidad. Conteo de faltantes y duplicados, revisión de las categorías y de la representatividad temporal.</p></li>
+<li><p>Depuración. Se eliminan las filas duplicadas. Los valores atípicos se dejan, porque un dato extremo no siempre es un error.</p></li>
+<li><p>Análisis univariado. Estadística descriptiva y diagramas de caja de la columna Promedio para cada variable.</p></li>
+<li><p>Comparación por región. Distribución de cada contaminante y variable meteorológica según la región de la estación.</p></li>
+<li><p>Análisis bivariado. Correlación de Spearman sobre los promedios anuales. Se usa Spearman porque cada variable tiene pocos puntos (máximo 14 años), las distribuciones no son normales y un año extremo afecta menos a los rangos. La fuerza se lee así: |ρ| ≥ 0,80 muy fuerte, 0,60 a 0,79 fuerte, 0,40 a 0,59 moderada, 0,20 a 0,39 débil y menos de 0,20 muy débil.</p></li>
+<li><p>Valores atípicos. Criterio de Tukey: es atípico todo valor menor que Q1 − 1,5·IQR o mayor que Q3 + 1,5·IQR.</p></li>
+<li><p>Variable objetivo. Excedencia del límite diario de PM2.5 en los registros de 24 horas, su balance y su relación con los posibles predictores, cuidando la fuga de información.</p></li>
 </ol>
-<p><strong>Herramientas:</strong> Python (pandas, NumPy, SciPy, Matplotlib, seaborn). El mismo análisis se replicó en R con resultados idénticos.</p>
+<p>Herramientas: Python (pandas, NumPy, SciPy, Matplotlib, seaborn y Plotly).</p>
 </section>
 </section>
 

@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/portada.css?v=63a57dca" />
+    <link rel="stylesheet" type="text/css" href="_static/portada.css?v=240fb320" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -64,6 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'conclusiones';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="prev" title="Análisis exploratorio de datos" href="eda.html" />
@@ -356,9 +357,9 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#respuesta-a-la-pregunta-de-investigacion">Respuesta a la pregunta de investigación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-del-analisis-exploratorio-objetivo-1">Hallazgos del análisis exploratorio (objetivo 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-sobre-la-variable-objetivo-objetivo-2">Hallazgos sobre la variable objetivo (objetivo 2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicaciones-para-el-modelo-objetivo-3">Implicaciones para el modelo (objetivo 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-del-analisis-exploratorio">Hallazgos del análisis exploratorio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-sobre-la-variable-objetivo">Hallazgos sobre la variable objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicaciones-para-el-modelo">Implicaciones para el modelo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitaciones">Limitaciones</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proximos-pasos">Próximos pasos</a></li>
 </ul>
@@ -376,32 +377,32 @@
 <span id="id1"></span><h1>Conclusiones<a class="headerlink" href="#conclusiones" title="Link to this heading">#</a></h1>
 <section id="respuesta-a-la-pregunta-de-investigacion">
 <h2>Respuesta a la pregunta de investigación<a class="headerlink" href="#respuesta-a-la-pregunta-de-investigacion" title="Link to this heading">#</a></h2>
-<p><strong>Sí es posible anticipar las excedencias de PM2.5</strong>, y los datos muestran de dónde viene esa capacidad predictiva. Las excedencias se concentran en las ciudades andinas (Bogotá 65 %, Antioquia 57 %) y son poco frecuentes en la costa Caribe (Córdoba 5 %). Además, ocurren más en estaciones fijas que en indicativas. Una prueba preliminar con validación por estación alcanzó un AUC de 0,81.</p>
-<p>Pero la información <strong>requiere preprocesamiento antes de modelar</strong>: hay duplicados, nombres inconsistentes, errores de unidades, un registro de excedencias no confiable en las mediciones horarias y una variable objetivo que depende del esfuerzo de medición.</p>
+<p>Sí se pueden anticipar las excedencias de PM2.5. Se concentran en las ciudades andinas (Bogotá 65 %, Antioquia 57 %), son poco frecuentes en la costa Caribe (Córdoba 5 %) y pasan más en estaciones fijas que en indicativas. Una prueba preliminar con validación por estación dio un AUC de 0,81.</p>
+<p>Antes de modelar hay que preprocesar los datos. Hay duplicados, nombres inconsistentes, errores de unidades, excedencias que no sirven en los registros de 1 hora y una variable objetivo que depende de cuántos días se midió.</p>
 </section>
-<section id="hallazgos-del-analisis-exploratorio-objetivo-1">
-<h2>Hallazgos del análisis exploratorio (objetivo 1)<a class="headerlink" href="#hallazgos-del-analisis-exploratorio-objetivo-1" title="Link to this heading">#</a></h2>
+<section id="hallazgos-del-analisis-exploratorio">
+<h2>Hallazgos del análisis exploratorio<a class="headerlink" href="#hallazgos-del-analisis-exploratorio" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Calidad:</strong> el 46,96 % de las filas estaba duplicado. Los departamentos aparecen con 49 nombres para 24 reales (municipios: 339 para 193). La presión mezcla hPa y mmHg, la radiación UV-B cambia de escala entre fuentes y hay representatividades mayores a 100 %. Los faltantes son mínimos (&lt; 0,5 %).</p></li>
-<li><p><strong>Cobertura:</strong> la red se triplicó entre 2011 y 2022, pero Antioquia y Bogotá aportan la mitad de los registros; la Amazonía, la Orinoquía y el Pacífico casi no tienen monitoreo.</p></li>
-<li><p><strong>Contaminantes:</strong> PM10 (−27,7 %) y PM2.5 (−31,4 %) bajaron entre 2011 y 2024; el ozono subió (+14 %) y el NO₂ repunta desde 2017. Parte del cambio puede deberse a la entrada de estaciones nuevas.</p></li>
-<li><p><strong>Meteorología:</strong> vientos débiles (1,2–1,7 m/s) que limitan la dispersión. TAire y HAire tienen pocos años; P y RUVb tienen problemas de unidades y escala.</p></li>
-<li><p><strong>Asociaciones:</strong> la única relación fuerte y confiable es PM10–PM2.5 (r = 0,97). Las correlaciones de RUVb y presión son espurias.</p></li>
-<li><p><strong>Atípicos:</strong> cerca del 4 % de los registros, casi siempre valores altos y concentrados en pocas estaciones. Se conservan.</p></li>
+<li><p>Calidad: el 46,96 % de las filas estaba duplicado. Hay 49 nombres para 24 departamentos y 339 para 193 municipios. La presión mezcla hPa y mmHg, la RUVb cambia de escala y hay representatividades de más de 100 %. Los faltantes son menos del 0,5 %.</p></li>
+<li><p>Cobertura: la red casi se triplicó entre 2011 y 2022, pero Antioquia y Bogotá tienen la mitad de los registros. La Amazonía, la Orinoquía y el Pacífico casi no tienen monitoreo.</p></li>
+<li><p>Contaminantes: el centro-norte (Valle de Aburrá) tiene la mediana más alta de PM2.5 (17,8 µg/m³) y el Caribe la más baja (13,7 µg/m³). El NO₂ es más del doble en las ciudades andinas que en el Caribe. Entre 2011 y 2024 el promedio nacional de PM10 bajó 27,7 % y el de PM2.5 31,4 %, y el ozono subió 14 %.</p></li>
+<li><p>Meteorología: el viento es débil en todas las regiones (medianas de 1,1 a 1,4 m/s). La presión sigue la altitud salvo por los registros en hPa. TAire y HAire tienen pocos registros, y P y RUVb tienen problemas de unidades y escala.</p></li>
+<li><p>Correlaciones: con Spearman la relación más confiable es PM10 y PM2.5 (ρ = 0,96 con 14 años). Las correlaciones con RUVb y presión no se pueden usar.</p></li>
+<li><p>Atípicos: 638 registros (4,1 %), casi todos valores altos. HAire (16 %), SO₂ (8,7 %) y CO (8,6 %) son las variables con más atípicos en proporción. Se conservan.</p></li>
 </ul>
 </section>
-<section id="hallazgos-sobre-la-variable-objetivo-objetivo-2">
-<h2>Hallazgos sobre la variable objetivo (objetivo 2)<a class="headerlink" href="#hallazgos-sobre-la-variable-objetivo-objetivo-2" title="Link to this heading">#</a></h2>
+<section id="hallazgos-sobre-la-variable-objetivo">
+<h2>Hallazgos sobre la variable objetivo<a class="headerlink" href="#hallazgos-sobre-la-variable-objetivo" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>La columna de excedencias solo es confiable en los <strong>registros de 24 horas</strong>, donde aplica exactamente el límite diario de la norma (50 µg/m³ hasta 2018, 37 µg/m³ desde entonces).</p></li>
-<li><p>La variable objetivo tiene <strong>1.144 registros de 383 estaciones</strong> y está <strong>balanceada</strong> (47,9 % excede).</p></li>
-<li><p>Aunque el promedio de PM2.5 bajó, la tasa de excedencia <strong>no muestra una tendencia a la baja</strong>: los episodios críticos persisten.</p></li>
-<li><p><strong>Ubicación y tipo de estación</strong> son los predictores más claros.</p></li>
-<li><p>La probabilidad de excedencia <strong>sube con los días medidos</strong> (21 % en el cuartil con menos días, 79 % en el de más días).</p></li>
+<li><p>La columna de excedencias solo sirve en los registros de 24 horas, donde coincide con el límite diario de la norma (50 µg/m³ hasta 2018 y 37 µg/m³ desde entonces).</p></li>
+<li><p>La variable objetivo tiene 1.144 registros de 383 estaciones y está balanceada (47,9 % excede).</p></li>
+<li><p>Aunque el promedio de PM2.5 bajó, el porcentaje de excedencia no baja. Los episodios críticos siguen.</p></li>
+<li><p>La ubicación y el tipo de estación son los predictores más claros.</p></li>
+<li><p>La excedencia sube con los días medidos: 21 % en el cuartil con menos días y 79 % en el de más días.</p></li>
 </ul>
 </section>
-<section id="implicaciones-para-el-modelo-objetivo-3">
-<h2>Implicaciones para el modelo (objetivo 3)<a class="headerlink" href="#implicaciones-para-el-modelo-objetivo-3" title="Link to this heading">#</a></h2>
+<section id="implicaciones-para-el-modelo">
+<h2>Implicaciones para el modelo<a class="headerlink" href="#implicaciones-para-el-modelo" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Problema</p></th>
@@ -410,28 +411,28 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Filas duplicadas</p></td>
-<td><p>Eliminarlas (ya aplicado)</p></td>
+<td><p>Eliminarlas (ya se hizo)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Nombres de departamento y municipio inconsistentes</p></td>
-<td><p>Normalizar (sin tildes, mayúsculas)</p></td>
+<td><p>Normalizar sin tildes y en mayúsculas</p></td>
 </tr>
 <tr class="row-even"><td><p>Excedencias no confiables en registros de 1 hora</p></td>
 <td><p>Usar solo registros de 24 horas</p></td>
 </tr>
-<tr class="row-odd"><td><p>Variables calculadas con las mismas mediciones (Promedio, Máximo, P98, Días de excedencias)</p></td>
-<td><p>Excluirlas: fuga de información</p></td>
+<tr class="row-odd"><td><p>Variables calculadas con las mismas mediciones (promedio, máximo, P98, días de excedencia)</p></td>
+<td><p>Excluirlas por fuga de información</p></td>
 </tr>
-<tr class="row-even"><td><p>Dependencia del esfuerzo de medición</p></td>
-<td><p>Incluir <code class="docutils literal notranslate"><span class="pre">No.</span> <span class="pre">de</span> <span class="pre">datos</span></code> como predictor de control</p></td>
+<tr class="row-even"><td><p>La excedencia depende de los días medidos</p></td>
+<td><p>Incluir No. de datos como variable de control</p></td>
 </tr>
-<tr class="row-odd"><td><p>Cambio del límite en 2018</p></td>
+<tr class="row-odd"><td><p>El límite cambió en 2018</p></td>
 <td><p>Incluir el año como predictor</p></td>
 </tr>
-<tr class="row-even"><td><p>Varias estaciones con muchos años</p></td>
-<td><p>Validar separando estaciones (<em>GroupKFold</em>), no filas al azar</p></td>
+<tr class="row-even"><td><p>Una misma estación aparece en varios años</p></td>
+<td><p>Validar separando estaciones (GroupKFold)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Errores de unidades en presión y RUVb</p></td>
-<td><p>Corregirlos si se incorporan variables meteorológicas</p></td>
+<td><p>Corregirlos si se usan las variables meteorológicas</p></td>
 </tr>
 </tbody>
 </table>
@@ -440,18 +441,18 @@
 <section id="limitaciones">
 <h2>Limitaciones<a class="headerlink" href="#limitaciones" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Composición cambiante de la red:</strong> las estaciones entran y salen; las tendencias nacionales mezclan cambios reales con cambios de cobertura.</p></li>
-<li><p><strong>Agregación anual:</strong> el dataset no permite estudiar la estacionalidad ni episodios diarios concretos.</p></li>
-<li><p><strong>Cobertura geográfica sesgada:</strong> el modelo aprenderá sobre todo de la región Andina.</p></li>
-<li><p><strong>Meteorología incompleta:</strong> solo una fracción de las estaciones de PM2.5 mide también variables meteorológicas.</p></li>
+<li><p>Las estaciones entran y salen de la red, así que los promedios nacionales mezclan cambios reales con cambios de cobertura.</p></li>
+<li><p>Los datos son anuales y no permiten estudiar la estacionalidad ni episodios de días concretos.</p></li>
+<li><p>La cobertura geográfica está sesgada y el modelo va a aprender sobre todo de la región Andina.</p></li>
+<li><p>Solo una parte de las estaciones de PM2.5 mide también variables meteorológicas.</p></li>
 </ul>
 </section>
 <section id="proximos-pasos">
 <h2>Próximos pasos<a class="headerlink" href="#proximos-pasos" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><strong>Preprocesamiento:</strong> aplicar las acciones de la tabla anterior y construir el conjunto de entrenamiento.</p></li>
-<li><p><strong>Modelado:</strong> comparar regresión logística, bosque aleatorio y gradient boosting con validación por estación; reportar AUC, recall y matriz de confusión.</p></li>
-<li><p><strong>Dashboard:</strong> incorporar el modelo para estimar el riesgo de excedencia de una estación.</p></li>
+<li><p>Preprocesamiento: aplicar las acciones de la tabla y armar el conjunto de entrenamiento.</p></li>
+<li><p>Modelado: comparar regresión logística, bosque aleatorio y gradient boosting con validación por estación, y reportar AUC, recall y matriz de confusión.</p></li>
+<li><p>Dashboard: agregar el modelo para estimar el riesgo de excedencia de una estación.</p></li>
 </ol>
 </section>
 </section>
@@ -514,9 +515,9 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#respuesta-a-la-pregunta-de-investigacion">Respuesta a la pregunta de investigación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-del-analisis-exploratorio-objetivo-1">Hallazgos del análisis exploratorio (objetivo 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-sobre-la-variable-objetivo-objetivo-2">Hallazgos sobre la variable objetivo (objetivo 2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicaciones-para-el-modelo-objetivo-3">Implicaciones para el modelo (objetivo 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-del-analisis-exploratorio">Hallazgos del análisis exploratorio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hallazgos-sobre-la-variable-objetivo">Hallazgos sobre la variable objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicaciones-para-el-modelo">Implicaciones para el modelo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitaciones">Limitaciones</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proximos-pasos">Próximos pasos</a></li>
 </ul>

@@ -2,13 +2,13 @@
 
 ## Introducción
 
-La contaminación del aire es uno de los principales riesgos ambientales para la salud. Partículas finas como el PM2.5 llegan hasta los alvéolos pulmonares, y gases como el dióxido de nitrógeno (NO₂) y el ozono (O₃) irritan las vías respiratorias. En Colombia, estos contaminantes los vigilan las autoridades ambientales regionales y urbanas mediante redes de estaciones de monitoreo, cuyos resultados se consolidan a nivel nacional.
+La contaminación del aire es uno de los riesgos ambientales que más afectan la salud. Las partículas finas como el PM2.5 llegan hasta los alvéolos, y gases como el dióxido de nitrógeno (NO₂) y el ozono (O₃) irritan las vías respiratorias. En Colombia estos contaminantes los miden las autoridades ambientales con redes de estaciones, y los resultados se reúnen en un consolidado nacional.
 
-Este trabajo analiza ese consolidado entre 2011 y 2024. Cada registro resume, para una estación, una variable y un tiempo de exposición, los estadísticos del año: promedio, mediana, percentil 98, máximo, mínimo, número de datos y representatividad temporal.
+En este trabajo se analiza ese consolidado entre 2011 y 2024. Cada registro resume un año de mediciones para una estación, una variable y un tiempo de exposición, con el promedio, la mediana, el percentil 98, el máximo, el mínimo, el número de datos y la representatividad temporal.
 
 ## Marco de referencia
 
-En Colombia, la **Resolución 2254 de 2017** del Ministerio de Ambiente y Desarrollo Sostenible fija los niveles máximos permisibles de contaminantes en el aire. Además de los niveles vigentes, define metas más estrictas a 2030.
+La Resolución 2254 de 2017 del Ministerio de Ambiente y Desarrollo Sostenible fija los niveles máximos permitidos de contaminantes en el aire y unas metas más estrictas para 2030.
 
 | Contaminante | Tiempo de exposición | Nivel vigente (µg/m³) | Meta 2030 (µg/m³) |
 |---|---|---|---|
@@ -16,50 +16,48 @@ En Colombia, la **Resolución 2254 de 2017** del Ministerio de Ambiente y Desarr
 | PM2.5 | Anual | 25 | 15 |
 | NO₂ | Anual | 60 | 40 |
 | SO₂ | 24 horas | 50 | 20 |
-| O₃ | 8 horas | 100 | — |
+| O₃ | 8 horas | 100 | Sin meta |
 
-Estos valores sirven como **referencia** para leer los promedios del EDA. No permiten verificar cumplimiento, porque el dataset mezcla tiempos de exposición distintos (1, 8 y 24 horas).
+En el EDA estos valores se usan como referencia para leer los resultados. No sirven para verificar cumplimiento porque el dataset mezcla tiempos de exposición de 1, 8 y 24 horas.
 
-Las variables meteorológicas importan porque controlan la dispersión: el viento y la mezcla vertical (favorecida por la temperatura) diluyen los contaminantes, y la radiación solar participa en la formación de ozono.
+Las variables meteorológicas también importan porque controlan cómo se dispersan los contaminantes. El viento y la mezcla del aire, que aumenta con la temperatura, los diluyen, y la radiación solar ayuda a formar ozono.
 
 ## Planteamiento del problema
 
-Colombia cuenta con más de una década de mediciones, pero la información llega de decenas de autoridades, con estaciones que entran y salen de operación, tiempos de exposición distintos y criterios de registro no homogéneos. Antes de usarla para tomar decisiones o construir modelos, hace falta saber qué contiene realmente, qué tan completa es y qué patrones muestra. Sin esa caracterización se corre el riesgo de sacar conclusiones de artefactos de los datos.
+Colombia tiene más de diez años de mediciones, pero los datos vienen de muchas autoridades, las estaciones entran y salen de operación, los tiempos de exposición son distintos y no todos registran igual. Antes de usar esta información para tomar decisiones o hacer un modelo hay que saber qué contiene, qué tan completa está y qué patrones tiene.
 
-**Pregunta de investigación:**
+Pregunta de investigación:
 
-> ¿Es posible anticipar, a partir de la ubicación, el tipo de estación y las características del monitoreo, qué estaciones registrarán días con PM2.5 por encima del límite diario de la norma? Y, como paso previo, ¿qué tan confiable y representativa es la información disponible para construir ese modelo?
+> ¿Se puede anticipar, a partir de la ubicación, el tipo de estación y las características del monitoreo, qué estaciones van a tener días con PM2.5 por encima del límite diario de la norma? Y antes de eso, ¿qué tan confiable es la información disponible para construir ese modelo?
 
-Predecir las excedencias tiene valor práctico: permite priorizar dónde reforzar el monitoreo, emitir alertas tempranas y focalizar medidas de control en las zonas con mayor riesgo para la salud.
+Predecir las excedencias sirve para decidir dónde reforzar el monitoreo, dar alertas tempranas y enfocar las medidas de control en las zonas con más riesgo.
 
 (objetivos)=
 ## Objetivos
 
 ### Objetivo general
 
-Desarrollar un modelo de clasificación que prediga si una estación de monitoreo registrará excedencias del límite diario de PM2.5 establecido en la Resolución 2254 de 2017, e integrarlo en un dashboard interactivo, a partir del análisis exploratorio de los datos de calidad del aire de Colombia (2011–2024).
+Desarrollar un modelo de clasificación que prediga si una estación de monitoreo tendrá excedencias del límite diario de PM2.5 de la Resolución 2254 de 2017, e integrarlo en un dashboard interactivo, a partir del análisis exploratorio de los datos de calidad del aire de Colombia entre 2011 y 2024.
 
 ### Objetivos específicos
 
-1. **Realizar un análisis exploratorio** que evalúe la calidad del dataset y caracterice la cobertura del monitoreo, los contaminantes, las variables meteorológicas, sus asociaciones y sus valores atípicos. *(Secciones 1 a 1.10)*
-2. **Caracterizar la variable objetivo** —la excedencia del límite diario de PM2.5— y su relación con los posibles predictores. *(Sección 1.11)*
-3. **Identificar los problemas de los datos** que debe resolver el preprocesamiento antes de entrenar el modelo. *(Conclusiones)*
-4. **Entrenar y comparar modelos de clasificación** con validación por estación. *(Siguiente etapa)*
-5. **Construir un dashboard interactivo** que integre el análisis exploratorio y el modelo. *(Siguiente etapa)*
-
-Este libro corresponde a la **etapa de análisis exploratorio** y desarrolla los objetivos 1, 2 y 3.
+1. Realizar un análisis exploratorio que evalúe la calidad del dataset y describa la cobertura del monitoreo, los contaminantes, las variables meteorológicas, sus correlaciones y sus valores atípicos.
+2. Caracterizar la variable objetivo, la excedencia del límite diario de PM2.5, y su relación con los posibles predictores.
+3. Identificar los problemas de los datos que debe resolver el preprocesamiento antes de entrenar el modelo.
+4. Entrenar y comparar modelos de clasificación con validación por estación.
+5. Construir un dashboard interactivo que integre el análisis exploratorio y el modelo.
 
 ## Metodología
 
-El proyecto sigue cuatro etapas: **análisis exploratorio → preprocesamiento → modelado → dashboard**. En esta etapa (EDA) se aplicó el siguiente flujo:
+El proyecto tiene cuatro etapas: análisis exploratorio, preprocesamiento, modelado y dashboard. En el EDA se siguieron estos pasos:
 
-1. **Carga y conversión de tipos.** Las columnas numéricas venían como texto con comas de miles; se eliminan las comas y se convierten a número.
-2. **Diagnóstico de calidad.** Conteo de faltantes y duplicados, revisión de categorías y de la representatividad temporal.
-3. **Depuración.** Se eliminan las filas duplicadas exactas. Los valores atípicos se conservan, porque un dato extremo no es necesariamente un error.
-4. **Análisis univariado.** Estadística descriptiva y diagramas de caja por variable, sobre la columna `Promedio`.
-5. **Análisis temporal.** Promedio anual de cada variable y cambio porcentual entre 2011 y 2024.
-6. **Análisis bivariado.** Correlación de Pearson sobre los promedios anuales, con esta escala de fuerza: |r| ≥ 0,80 muy fuerte; 0,60–0,79 fuerte; 0,40–0,59 moderada; 0,20–0,39 débil; < 0,20 muy débil.
-7. **Valores atípicos.** Criterio de Tukey: es atípico todo valor por debajo de Q1 − 1,5·IQR o por encima de Q3 + 1,5·IQR.
-8. **Variable objetivo.** Excedencia del límite diario de PM2.5 (registros de 24 horas), su balance y su relación con los predictores candidatos, controlando la fuga de información.
+1. Carga y conversión de tipos. Las columnas numéricas venían como texto con comas de miles. Se quitan las comas y se convierten a número.
+2. Diagnóstico de calidad. Conteo de faltantes y duplicados, revisión de las categorías y de la representatividad temporal.
+3. Depuración. Se eliminan las filas duplicadas. Los valores atípicos se dejan, porque un dato extremo no siempre es un error.
+4. Análisis univariado. Estadística descriptiva y diagramas de caja de la columna Promedio para cada variable.
+5. Comparación por región. Distribución de cada contaminante y variable meteorológica según la región de la estación.
+6. Análisis bivariado. Correlación de Spearman sobre los promedios anuales. Se usa Spearman porque cada variable tiene pocos puntos (máximo 14 años), las distribuciones no son normales y un año extremo afecta menos a los rangos. La fuerza se lee así: |ρ| ≥ 0,80 muy fuerte, 0,60 a 0,79 fuerte, 0,40 a 0,59 moderada, 0,20 a 0,39 débil y menos de 0,20 muy débil.
+7. Valores atípicos. Criterio de Tukey: es atípico todo valor menor que Q1 − 1,5·IQR o mayor que Q3 + 1,5·IQR.
+8. Variable objetivo. Excedencia del límite diario de PM2.5 en los registros de 24 horas, su balance y su relación con los posibles predictores, cuidando la fuga de información.
 
-**Herramientas:** Python (pandas, NumPy, SciPy, Matplotlib, seaborn). El mismo análisis se replicó en R con resultados idénticos.
+Herramientas: Python (pandas, NumPy, SciPy, Matplotlib, seaborn y Plotly).
