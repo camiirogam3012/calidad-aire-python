@@ -75,7 +75,7 @@
 
 /* Capítulos */
 .portada dl.capitulos { display: grid; grid-template-columns: 11em 1fr; gap: 0.7em 1.4em; margin: 0; }
-.capitulos dt { font-weight: 600; margin: 0; }
+.capitulos dt { font-weight: 500; margin: 0; }
 .portada .capitulos dd { margin: 0; margin-left: 0; color: var(--slate); line-height: 1.55; }
 
 /* Hallazgos */
