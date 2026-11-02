@@ -59,5 +59,7 @@ El proyecto tiene cuatro etapas: análisis exploratorio, preprocesamiento, model
 6. Análisis bivariado. Correlación de Spearman sobre los promedios anuales. Se usa Spearman porque cada variable tiene pocos puntos (máximo 14 años), las distribuciones no son normales y un año extremo afecta menos a los rangos. La fuerza se lee así: |ρ| ≥ 0,80 muy fuerte, 0,60 a 0,79 fuerte, 0,40 a 0,59 moderada, 0,20 a 0,39 débil y menos de 0,20 muy débil.
 7. Valores atípicos. Criterio de Tukey: es atípico todo valor menor que Q1 − 1,5·IQR o mayor que Q3 + 1,5·IQR.
 8. Variable objetivo. Excedencia del límite diario de PM2.5 en los registros de 24 horas, su balance y su relación con los posibles predictores, cuidando la fuga de información.
+9. Modelo. Se comparan regresión logística, bosque aleatorio y gradient boosting con validación cruzada por estación (GroupKFold, 5 grupos), para que una misma estación no quede a la vez en entrenamiento y prueba. Se reportan AUC, exactitud, precisión, recall, F1, kappa, la matriz de confusión y la curva ROC.
+10. Integración. El mejor modelo se guarda con joblib y se integra en un dashboard en Dash y en una aplicación en Shiny, con una página para entrenar y otra para predecir.
 
-Herramientas: Python (pandas, NumPy, SciPy, Matplotlib, seaborn y Plotly).
+Herramientas: Python (pandas, NumPy, SciPy, Matplotlib, seaborn, Plotly, scikit-learn y joblib).

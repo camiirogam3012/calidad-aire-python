@@ -3,9 +3,9 @@
 
 ## Respuesta a la pregunta de investigación
 
-Sí se pueden anticipar las excedencias de PM2.5. Se concentran en las ciudades andinas (Bogotá 65 %, Antioquia 57 %), son poco frecuentes en la costa Caribe (Córdoba 5 %) y pasan más en estaciones fijas que en indicativas. Una prueba preliminar con validación por estación dio un AUC de 0,81.
+Sí se pueden anticipar las excedencias de PM2.5. Con la ubicación, el tipo de estación, los días medidos y el año, el mejor modelo (gradient boosting) alcanzó un AUC de 0,824 con validación por estación, es decir, evaluado en estaciones que no vio durante el entrenamiento. Acierta en 3 de cada 4 registros.
 
-Antes de modelar hay que preprocesar los datos. Hay duplicados, nombres inconsistentes, errores de unidades, excedencias que no sirven en los registros de 1 hora y una variable objetivo que depende de cuántos días se midió.
+Para llegar ahí hubo que preprocesar los datos: quitar duplicados, normalizar nombres, usar solo los registros de 24 horas y dejar por fuera las variables que causan fuga de información.
 
 ## Hallazgos del análisis exploratorio
 
@@ -24,11 +24,18 @@ Antes de modelar hay que preprocesar los datos. Hay duplicados, nombres inconsis
 - La ubicación y el tipo de estación son los predictores más claros.
 - La excedencia sube con los días medidos: 21 % en el cuartil con menos días y 79 % en el de más días.
 
-## Implicaciones para el modelo
+## Resultados del modelo
 
-| Problema | Acción en el preprocesamiento |
+- Gradient boosting fue el mejor modelo (AUC 0,824, exactitud 0,747, recall 0,693), seguido por el bosque aleatorio (AUC 0,813). La regresión logística quedó atrás (AUC 0,740) porque la relación con la ubicación no es lineal.
+- Los días medidos son el predictor que más pesa, seguido por el año y la ubicación. El tipo de estación casi no aporta cuando ya están los días medidos.
+- Con una división de 80 % de las estaciones para entrenar y 20 % para probar, el AUC en prueba fue 0,816, muy parecido al de la validación cruzada.
+- El modelo está integrado en el [dashboard en Dash](https://eda-dashboard-2pvi.onrender.com/) y en la [aplicación en Shiny](https://l28nb2-camilo-romero.shinyapps.io/calidad-aire-colombia/), con una página para entrenar y otra para predecir.
+
+## Decisiones del preprocesamiento
+
+| Problema | Decisión |
 |---|---|
-| Filas duplicadas | Eliminarlas (ya se hizo) |
+| Filas duplicadas | Eliminarlas |
 | Nombres de departamento y municipio inconsistentes | Normalizar sin tildes y en mayúsculas |
 | Excedencias no confiables en registros de 1 hora | Usar solo registros de 24 horas |
 | Variables calculadas con las mismas mediciones (promedio, máximo, P98, días de excedencia) | Excluirlas por fuga de información |
@@ -42,10 +49,5 @@ Antes de modelar hay que preprocesar los datos. Hay duplicados, nombres inconsis
 - Las estaciones entran y salen de la red, así que los promedios nacionales mezclan cambios reales con cambios de cobertura.
 - Los datos son anuales y no permiten estudiar la estacionalidad ni episodios de días concretos.
 - La cobertura geográfica está sesgada y el modelo va a aprender sobre todo de la región Andina.
-- Solo una parte de las estaciones de PM2.5 mide también variables meteorológicas.
-
-## Próximos pasos
-
-1. Preprocesamiento: aplicar las acciones de la tabla y armar el conjunto de entrenamiento.
-2. Modelado: comparar regresión logística, bosque aleatorio y gradient boosting con validación por estación, y reportar AUC, recall y matriz de confusión.
-3. Dashboard: agregar el modelo para estimar el riesgo de excedencia de una estación.
+- Solo una parte de las estaciones de PM2.5 mide también variables meteorológicas, por eso no entran al modelo.
+- El modelo estima la probabilidad de al menos un día de excedencia en el año. No pronostica concentraciones ni días concretos.

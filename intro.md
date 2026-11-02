@@ -10,17 +10,17 @@ año muestra cuánto creció la red.</figcaption>
 # Calidad del aire en Colombia, 2011–2024
 
 <div class="portada">
-<p class="p-pregunta">¿Qué estaciones superarán el límite diario de PM2.5? Antes de construir el modelo que lo prediga,
-este libro examina los datos: qué tan confiables son, qué muestran y qué hay que corregir.</p>
+<p class="p-pregunta">¿Qué estaciones superarán el límite diario de PM2.5? Este libro examina los datos, qué tan
+confiables son y qué muestran, y construye el modelo que predice la excedencia.</p>
 <p class="p-autor"><span class="autor">Camilo Romero</span> <a href="mailto:cgamarraa@uninorte.edu.co">cgamarraa@uninorte.edu.co</a><br>
 Visualización de Datos, Universidad del Norte, Barranquilla</p>
-<nav class="formatos" aria-label="Formatos del análisis"><span class="fmt fmt-actual" aria-current="page">Python<small>este libro</small></span><a class="fmt" href="https://camiirogam3012.github.io/calidad-aire-r/">R<small>mismo análisis</small></a><a class="fmt" href="https://eda-calidad-aire.onrender.com/">Dashboard<small>versión interactiva</small></a></nav>
+<nav class="formatos" aria-label="Formatos del análisis"><span class="fmt fmt-actual" aria-current="page">Python<small>este libro</small></span><a class="fmt" href="https://camiirogam3012.github.io/calidad-aire-r/">R<small>mismo análisis</small></a><a class="fmt" href="https://eda-dashboard-2pvi.onrender.com/">Dash<small>tablero en Python</small></a><a class="fmt" href="https://l28nb2-camilo-romero.shinyapps.io/calidad-aire-colombia/">Shiny<small>tablero en R</small></a></nav>
 <h2 class="p-h2">El proyecto en cuatro etapas</h2>
 <ol class="ruta">
-<li class="ruta-actual"><span class="ruta-n">1</span><span class="ruta-t">Análisis exploratorio</span><span>Este libro, en Jupyter Book</span></li>
-<li><span class="ruta-n">2</span><span class="ruta-t">Preprocesamiento</span><span>Corregir lo que encontró el EDA</span></li>
-<li><span class="ruta-n">3</span><span class="ruta-t">Modelo</span><span>Clasificar estaciones según su riesgo de excedencia</span></li>
-<li><span class="ruta-n">4</span><span class="ruta-t">Dashboard</span><span>Explorar los datos y consultar el modelo</span></li>
+<li class="ruta-actual"><span class="ruta-n">1</span><span class="ruta-t">Análisis exploratorio</span><span>Conocer los datos y la variable objetivo</span></li>
+<li class="ruta-actual"><span class="ruta-n">2</span><span class="ruta-t">Preprocesamiento</span><span>Corregir lo que encontró el EDA</span></li>
+<li class="ruta-actual"><span class="ruta-n">3</span><span class="ruta-t">Modelo</span><span>Clasificar estaciones según su riesgo de excedencia</span></li>
+<li class="ruta-actual"><span class="ruta-n">4</span><span class="ruta-t">Dashboard</span><span>Dash y Shiny para explorar y predecir</span></li>
 </ol>
 <h2 class="p-h2">Qué hay en cada capítulo</h2>
 <dl class="capitulos">
@@ -28,13 +28,16 @@ Visualización de Datos, Universidad del Norte, Barranquilla</p>
 <dd>El problema, la norma de calidad del aire, la pregunta de investigación y los objetivos.</dd>
 <dt><a href="eda.html">Análisis exploratorio</a></dt>
 <dd>Calidad de los datos, cobertura, contaminantes, meteorología, correlaciones, atípicos y la variable objetivo, con la interpretación de cada resultado.</dd>
+<dt><a href="modelo.html">Modelo de predicción</a></dt>
+<dd>Comparación de tres modelos con validación por estación, métricas, importancia de los predictores y ejemplos de predicción.</dd>
 <dt><a href="conclusiones.html">Conclusiones</a></dt>
-<dd>La respuesta a la pregunta y lo que el modelo debe tener en cuenta.</dd>
+<dd>La respuesta a la pregunta, los resultados del análisis y del modelo, las decisiones del preprocesamiento y las limitaciones.</dd>
 </dl>
-<h2 class="p-h2">Tres hallazgos para empezar</h2>
+<h2 class="p-h2">Cuatro hallazgos para empezar</h2>
 <ul class="hallazgos">
 <li>Casi la mitad del archivo estaba duplicada (47 % de las filas) y los 49 departamentos que aparecían son en realidad 24.</li>
 <li>El PM2.5 promedio bajó 31 % entre 2011 y 2024, pero los días sobre el límite no bajaron. El 48 % de los registros tiene al menos uno.</li>
 <li>La ubicación pesa más que el año. En Bogotá el 65 % de los registros excede el límite y en Córdoba el 5 %.</li>
+<li>El mejor modelo predice la excedencia con un AUC de 0,82 en estaciones que no vio durante el entrenamiento.</li>
 </ul>
 </div>
